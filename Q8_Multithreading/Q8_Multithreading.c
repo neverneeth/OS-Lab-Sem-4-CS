@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <math.h>
+
 
 
 double mean,std_dev, median;
@@ -39,10 +41,26 @@ void *calculate_median(void *args){
 	}
 	if((median_args->size)%2 == 0){
 		double mid = median_args->size / 2;
-		median = (ar[mid] + ar[mid-1]) /2 ;
+		median = (ar[mid] + ar[mid-1]) / 2.0 ;
 	} else{
 		median = ar[(median_args->size)/2] ;
 	}
 	free(ar); 
 	return median_args;
+}
+
+
+void *calculate_std_dev(void *args){
+	Thread *sd_args = (Thread *)args;
+	double mean = 0.0;
+	for(int i = 0; i < sd_args->size; i++){
+		mean = mean + sd_args->array[i];
+	}
+	mean = mean / (sd_args->size);
+	double numerator = 0;
+	for(int i = 0 ; i< sd_args->size; i++){
+		numerator += pow( sd_args->array[i] - mean, 2) ;
+	}
+	std_dev = sqrt(numerator / sd_args->size);
+	return sd_args;
 }
