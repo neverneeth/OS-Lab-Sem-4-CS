@@ -41,7 +41,7 @@ int main(){
 					current_time += p[i].remaining;
 					p[i].remaining = 0;
 					completed++;
-                    			current_time++;
+
               				p[i].completion = current_time;
 					p[i].turnaround = p[i].completion - p[i].arrival;
 					p[i].waiting = p[i].turnaround  - p[i].burst;
