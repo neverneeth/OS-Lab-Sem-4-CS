@@ -17,6 +17,7 @@ int main(){
 		printf("\tPriority: "); scanf("%d", &(p[i].priority) );
 		printf("Proccess %d Registered.\n", i+1);
 	}
+	int gantt[n], pos = 0;
 	int current_time = 0, wait_sum = 0, tat_sum = 0;
 	printf("\n\nNon-Preemptive Priority Scheduling: \n");
 	
@@ -45,6 +46,7 @@ int main(){
         	p[index].waiting = p[index].turnaround - p[index].burst;
         	wait_sum += p[index].waiting;
 
+		gantt[pos++] = p[index].id;
 		p[index].is_complete = 1; completed++;
 	}
         printf("\nNon-Preemptive Priority Scheduling Complete.\n");
