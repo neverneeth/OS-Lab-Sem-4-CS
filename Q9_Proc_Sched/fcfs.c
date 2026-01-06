@@ -17,9 +17,6 @@ int main(){
 		printf("\tArrival: "); scanf("%d", &(p[i].arrival) );
 		printf("\tBurst: "); scanf("%d", &(p[i].burst) );
 		printf("\tPriority: "); scanf("%d", &(p[i].priority) );
-		printf("\tCompletion: "); scanf("%d", &(p[i].completion) );
-		printf("\tWaiting: "); scanf("%d", &(p[i].waiting) );
-		printf("\tTurnAround: "); scanf("%d", &(p[i].turnaround) );
 		printf("Proccess %d Registered\n.", i+1);
 	}
 	return 0;
