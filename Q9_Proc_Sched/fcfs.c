@@ -19,5 +19,23 @@ int main(){
 		printf("\tPriority: "); scanf("%d", &(p[i].priority) );
 		printf("Proccess %d Registered\n.", i+1);
 	}
+
+	Proc small; int pos;
+	for(int i = 0; i < n-1; i++){
+		small = p[i], pos = i;
+		for(int j = i+1; j < n;j++){
+			if(p[j].arrival < small.arrival){
+				small = p[j]; 
+				pos = j;
+			}
+		}
+		p[pos] = p[i];
+		p[i] = small;
+	}
+
+	printf("\nProccesses entered in sorted order: \n");
+	for(int i = 0; i < n;i++){
+		printf("Proc %d: %d\n", i+1, p[i].arrival);
+	}
 	return 0;
 }
