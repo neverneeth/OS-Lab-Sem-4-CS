@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 typedef struct Proc{
-	int id, arrival, burst, priority, completion, waiting, turnaround;
+	int id, arrival, burst, completion, waiting, turnaround;
 }Proc ;
 
 int main(){
@@ -13,8 +13,7 @@ int main(){
 		printf("\nProccess %d:\n", i+1);
 		printf("\tID: "); scanf("%d", &(p[i].id));
 		printf("\tArrival: "); scanf("%d", &(p[i].arrival) );
-		printf("\tBurst: "); scanf("%d", &(p[i].burst) );
-		printf("\tPriority: "); scanf("%d", &(p[i].priority) );
+		printf("\tBurst: "); scanf("%d", &(p[i].burst) );/
 		printf("Proccess %d Registered.\n", i+1);
 	}
 
@@ -32,10 +31,10 @@ int main(){
 	}
 	int current_time = 0, wait_sum = 0, tat_sum = 0;
 	printf("\n\nFCFS Scheduling: \n");
+	printf("\nPid\tArrival\tBurst\tCompletion   Waiting\tTurn Around");
 	for(int i = 0; i < n;i++){
 		if(current_time < p[i].arrival) current_time = p[i].arrival;
 		//process completed
-		printf("\nProccess ID %d: Completed", p[i].id) ;
 		p[i].completion = current_time + p[i].burst;
 
 		p[i].turnaround = p[i].completion - p[i].arrival;
@@ -43,7 +42,7 @@ int main(){
 
 		p[i].waiting = p[i].turnaround - p[i].burst;
 		wait_sum += p[i].waiting;
-
+		printf("\n%d\t%d\t%d\t%d\t\t%d\t%d", p[i].id, p[i].arrival, p[i].burst, p[i].completion, p[i].waiting, p[i].turnaround);
 		current_time = p[i].completion;
 	}
 	printf("\nFCFS Scheduling Complete.\n");
