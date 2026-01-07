@@ -28,7 +28,12 @@ int main(){
 		p[pos] = p[i];
 		p[i] = small;
 	}
+	for(int i = 0; i < n;i++){
+		p[i].completion = 0, p[i].waiting = 0, p[i].turnaround = 0;
+	}
 	pos = 0;int flag = 0;
+	printf("\nRound Robin Scheduling: \n");
+	printf("\nPid\tArrival\tBurst\tCompletion   Waiting\tTurn Around");
 	while(completed < n){
 		for(int i = 0;i < n;i++){
 			if(p[i].arrival <= current_time && p[i].remaining > 0){
@@ -36,6 +41,7 @@ int main(){
 				flag = 1;
 				if(p[i].remaining > 3){
 					p[i].remaining = p[i].remaining - 3;
+					printf("\n%d\t%d\t%d\t%d\t\t%d\t%d", p[i].id, p[i].arrival, p[i].burst, p[i].completion, p[i].waiting, p[i].turnaround); 
 					current_time += 3;
 				}else{
 					current_time += p[i].remaining;
@@ -45,6 +51,7 @@ int main(){
               				p[i].completion = current_time;
 					p[i].turnaround = p[i].completion - p[i].arrival;
 					p[i].waiting = p[i].turnaround  - p[i].burst;
+					printf("\n%d\t%d\t%d\t%d\t\t%d\t%d", p[i].id, p[i].arrival, p[i].burst, p[i].completion, p[i].waiting, p[i].turnaround);
 
 					wait_sum += p[i].waiting;
 					tat_sum += p[i].turnaround;
