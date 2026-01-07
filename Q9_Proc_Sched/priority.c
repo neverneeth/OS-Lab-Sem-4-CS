@@ -23,7 +23,10 @@ int main(){
 
 	for(int i = 0;i < n;i++){
 		p[i].is_complete = 0;
+		p[i].completion = 0;
+		p[i].waiting = 0, p[i].turnaround = 0;
 	}
+	printf("\nPid\tArrival\tBurst\tPriority   Completion\tWaiting   Turn Around");
 	int completed = 0;
 	while(completed < n){
 		int max_prio = p[0].priority, index = -1;
@@ -48,7 +51,7 @@ int main(){
 		gantt[pos++] = p[index].id;
 		p[index].is_complete = 1; completed++;
 		current_time = p[index].completion;
-		printf("Process ID: %d Complete\n", p[index].id);
+		printf("\n%d\t%d\t%d\t%d\t\t%d\t   %d\t   %d", p[index].id,  p[index].arrival,  p[index].burst,  p[index].priority,  p[index].completion,  p[index].waiting,  p[index].turnaround );
 	}
         printf("\nNon-Preemptive Priority Scheduling Complete.\n");
         printf("\nAverage Waiting Time: %lf", (double)wait_sum/n);
