@@ -37,15 +37,15 @@ int main(){
 		return 0;
 	} else {
 		close(fd[1]) ;
-		printf("\nParent Process Calculated b2: %d", b*b);
+		printf("\nParent Process Calculated b2: %d\n", b*b);
 
 		int recieved ;
 		recieved = read(fd[0], &recieved, sizeof(int)); 
-		printf("\nParent Recieved 4ac: %d", recieved);
+		printf("\nParent Recieved 4ac: %d\n", recieved);
 		close(fd[0]);
 
-		int result = sqrt((b*b) - recieved) ;
-		printf("\nFinal Result : %d\n", result);
+		double result = sqrt((b*b) - recieved) ;
+		printf("\nFinal Result : %lf\n", result);
 		wait(NULL);
 
 	}
