@@ -1,4 +1,5 @@
-# Lab Cycle Questions :-     
+# Operating Systems Lab
+## Lab Cycle Questions     
 ### (Question 1,2 are familiarisation exercises)
 
 ![S4 Syllabus-pages_page-0001](https://github.com/user-attachments/assets/17c4a5c4-bb98-4771-91aa-fc0bb140be34)
