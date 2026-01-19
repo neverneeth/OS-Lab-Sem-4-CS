@@ -1,6 +1,6 @@
 # Operating Systems Lab      
 This repository contains C programs developed as part of the Operating Systems Lab (BTech CS).  
-The programs demonstrate fundamental operating system concepts.       
+The programs demonstrate fundamental Operating Systems concepts.       
 
 ## Usage Notes
 
