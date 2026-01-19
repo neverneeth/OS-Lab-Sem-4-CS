@@ -1,13 +1,13 @@
-# Operating Systems Lab
-## Lab Cycle Questions     
-### (Question 1,2 are familiarisation exercises)
+# Operating Systems Lab      
+This repository contains C programs developed as part of the Operating Systems Lab (BTech CS).  
+The programs demonstrate fundamental operating system concepts.       
 
-![S4 Syllabus-pages_page-0001](https://github.com/user-attachments/assets/17c4a5c4-bb98-4771-91aa-fc0bb140be34)
+## Usage Notes
 
-![S4 Syllabus-pages_page-0002](https://github.com/user-attachments/assets/6b9a21be-70a3-484d-883e-3259bcee4040)
-
-![S4 Syllabus-pages_page-0003](https://github.com/user-attachments/assets/7cd0cefc-50c8-4b1f-93f0-6c8a878fb3c9)
-
+- Programs are written for a **Linux/UNIX environment**.
+- Standard system headers and libraries are used.
+- All programs strictly follows **POSIX** standard
+           
 
 ## Contributors:
 
