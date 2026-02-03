@@ -5,7 +5,7 @@ typedef struct Proc{
 	int id, arrival, burst, priority, completion, waiting, turnaround, remaining, is_complete;
 }Proc;
 
-void fcfs(Proc p[], int n){
+double fcfs(Proc p[], int n){
 	// Sort by arrival time
 	Proc small; int pos;
 	for(int i = 0; i < n-1; i++){
@@ -37,16 +37,19 @@ void fcfs(Proc p[], int n){
 		current_time = p[i].completion;
 	}
 	printf("\nFCFS Scheduling Complete.\n");
-	printf("\nAverage Waiting Time: %lf", (double)wait_sum/n);
+	double avg_wait = (double)wait_sum/n;
+	printf("\nAverage Waiting Time: %lf", avg_wait);
 	printf("\nAverage Turn Around Time: %lf", (double)tat_sum/n);
 
 	printf("\n\nGantt chart for FCFS: \n");
 	for(int i = 0; i < n; i++){
 		printf(" | %d", p[i].id);
 	}printf(" |\n");
+	
+	return avg_wait;
 }
 
-void priority_scheduling(Proc p[], int n){
+double priority_scheduling(Proc p[], int n){
 	int gantt[n], pos = 0;
 	int current_time = 0, wait_sum = 0, tat_sum = 0;
 	printf("\n\nNon-Preemptive Priority Scheduling: \n");
@@ -84,16 +87,19 @@ void priority_scheduling(Proc p[], int n){
 		printf("\n%d\t%d\t%d\t%d\t\t%d\t   %d\t   %d", p[index].id,  p[index].arrival,  p[index].burst,  p[index].priority,  p[index].completion,  p[index].waiting,  p[index].turnaround );
 	}
         printf("\nNon-Preemptive Priority Scheduling Complete.\n");
-        printf("\nAverage Waiting Time: %lf", (double)wait_sum/n);
+        double avg_wait = (double)wait_sum/n;
+        printf("\nAverage Waiting Time: %lf", avg_wait);
         printf("\nAverage Turn Around Time: %lf", (double)tat_sum/n);
 
         printf("\n\nGantt chart for Non-Preemptive Priority: \n");
         for(int i = 0; i < n; i++){
             	printf(" | %d", gantt[i]);
         }printf(" |\n");
+        
+        return avg_wait;
 }
 
-void round_robin(Proc p[], int n){
+double round_robin(Proc p[], int n){
 	int tat_sum =0, wait_sum = 0;
 	int tq = 3;int completed = 0,current_time = 0;
 	
@@ -147,15 +153,18 @@ void round_robin(Proc p[], int n){
 	}
 
 	printf("\nRound Robin Scheduling Complete.\n");
-	printf("\nAverage Waiting Time: %lf", (double)wait_sum/n);
+	double avg_wait = (double)wait_sum/n;
+	printf("\nAverage Waiting Time: %lf", avg_wait);
 	printf("\nAverage Turn Around Time: %lf", (double)tat_sum/n);
 	printf("\n\nGantt Chart: \n");
 	for(int i = 0;i < pos;i++){
 		printf("| %d ", gantt[i]);
 	}printf("|\n");
+	
+	return avg_wait;
 }
 
-void srtf(Proc p[], int n){
+double srtf(Proc p[], int n){
 	int completed = 0,current_time = 0;
 
 	int gantt[1000];
@@ -166,7 +175,7 @@ void srtf(Proc p[], int n){
 	}
 
 	int prev = -1,pos=0;
-	printf("\n\nSRTF Process Scheduling...\n");
+	printf("\n\nSRTF Process Scheduling: \n");
 	while(completed<n)
 	{
 		int minRT=9999, index = -1;
@@ -215,11 +224,13 @@ void srtf(Proc p[], int n){
 	}
 
 	printf("\n%-5s %-10s %-10s %-10s %-10s %-10s\n", 
-       "ID", "Arrival", "Burst", "Exit", "TAT", "Wait");
+       "Pid", "Arrival", "Burst", "Completion", "Waiting", "Turn Around");
     
+    int wait_sum = 0;
     for (int i = 0; i < n; i++)
     {
-        printf("%-5d %-10d %-10d %-10d %-10d %-10d\n",p[i].id, p[i].arrival, p[i].burst,p[i].completion, p[i].turnaround, p[i].waiting);
+        printf("%-5d %-10d %-10d %-10d %-10d %-10d\n",p[i].id, p[i].arrival, p[i].burst,p[i].completion,  p[i].waiting,p[i].turnaround);
+        wait_sum += p[i].waiting;
     }
 
     printf("\n\nGantt Chart: \n");
@@ -228,6 +239,8 @@ void srtf(Proc p[], int n){
 		printf("| %d ", gantt[i]);
 	}
 	printf("|\n");
+	
+	return (double)wait_sum/n;
 }
 
 int main(){
@@ -251,11 +264,31 @@ int main(){
 	memcpy(p_copy2, p, n * sizeof(Proc));
 	memcpy(p_copy3, p, n * sizeof(Proc));
 	
-	// Run all 4 scheduling algorithms
-	fcfs(p, n);
-	priority_scheduling(p_copy1, n);
-	round_robin(p_copy2, n);
-	srtf(p_copy3, n);
+	// Run all 4 scheduling algorithms and capture average waiting times
+	double fcfs_avg = fcfs(p, n);
+	double priority_avg = priority_scheduling(p_copy1, n);
+	double rr_avg = round_robin(p_copy2, n);
+	double srtf_avg = srtf(p_copy3, n);
+	
+	// Find minimum average waiting time
+	double min_avg = fcfs_avg;
+	char min_algo[50] = "FCFS";
+	
+	if(priority_avg < min_avg){
+		min_avg = priority_avg;
+		strcpy(min_algo, "Priority");
+	}
+	if(rr_avg < min_avg){
+		min_avg = rr_avg;
+		strcpy(min_algo, "Round Robin");
+	}
+	if(srtf_avg < min_avg){
+		min_avg = srtf_avg;
+		strcpy(min_algo, "SRTF");
+	}
+	
+	printf("\nMinimum Average Waiting Time: %lf\n", min_avg);
+	printf("Best Algorithm: %s\n", min_algo);
 	
 	return 0;
 }
