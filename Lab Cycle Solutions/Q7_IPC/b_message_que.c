@@ -32,6 +32,14 @@ int main() {
 	pid_t pid = fork();
 	if(pid == 0){
 		msgrcv(msgid, &message, sizeof(message), 1, 0);
+		printf("\nChild recieved string: %s", message.msg_text);
+
+		int len = strlen(message.msg_text);
+		for(int i = 0;i< (len/2); i++){
+			char temp = message.msg_text[i]; 
+			message.msg_text[i] = message.msg_text[len-i-1];
+			message.msg_text[len-1-i] = temp;
+		}
 	}else {
 	}
 
