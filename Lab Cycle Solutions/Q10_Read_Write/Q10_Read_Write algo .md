@@ -1,8 +1,7 @@
-# Algorithm: Writer-Priority Readers-Writers
+# Readers - Writers Algorithm
 
-This algorithm ensures that writers are given priority over readers to prevent writer starvation.
 
-## 1. Main Process Algorithm
+## 1. Main Method
 * **Step 1: Start.**
 * **Step 2: Resource Allocation.** Allocate memory for a shared data structure containing reader/writer counts and semaphores.
 * **Step 3: Initialization.** * Set reader count (`rc`) and writer count (`wc`) to 0.
@@ -14,7 +13,7 @@ This algorithm ensures that writers are given priority over readers to prevent w
 
 ---
 
-## 2. Reader Thread Algorithm
+## 2. Function: Readers
 * **Step 1: Turnstile Entry.** Wait on `r_mutex` and immediately signal it. This acts as a gate that closes if a writer is waiting.
 * **Step 2: Update Reader Count.** Wait on `mutex`, increment `rc`.
 * **Step 3: Lock File Access.** If this is the first reader (`rc == 1`), wait on `rw_mutex` to block writers from the file.
@@ -26,7 +25,7 @@ This algorithm ensures that writers are given priority over readers to prevent w
 
 ---
 
-## 3. Writer Thread Algorithm
+## 3. Function: Writers
 * **Step 1: Update Writer Count.** Wait on `w_mutex`, increment `wc`.
 * **Step 2: Close Turnstile.** If this is the first writer (`wc == 1`), wait on `r_mutex` to prevent new readers from entering.
 * **Step 3: Release Count Lock.** Signal `w_mutex`.
