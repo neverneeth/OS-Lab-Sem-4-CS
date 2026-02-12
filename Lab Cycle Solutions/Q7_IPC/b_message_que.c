@@ -31,7 +31,7 @@ int main() {
 
 	pid = fork();
 	if(pid == 0){
-		msgrcv(msgid, &message, sizeof(message), 1, 0);
+		msgrcv(msgid, &message, sizeof(message.msg_text), 1, 0);
 		printf("\nChild recieved string: %s\n", message.msg_text);
 
 		int len = strlen(message.msg_text);
@@ -43,7 +43,7 @@ int main() {
 
 		printf("\nChild sending reversed string: %s\n", message.msg_text); 
 		message.msg_type = 2;
-		msgsnd(msgid, &message, sizeof(message), 0);
+		msgsnd(msgid, &message, sizeof(message.msg_text), 0);
 	}else {
 		printf("\nEnter the String (Unifrom Caps): ");
 		scanf("%s", message.msg_text);
@@ -51,13 +51,15 @@ int main() {
 		strcpy(temp, message.msg_text);
 
 		message.msg_type = 1;
-		msgsnd(msgid, &message, sizeof(message), 0);
+		msgsnd(msgid, &message, sizeof(message.msg_text), 0);
 		printf("\nParent Send: %s\n", message.msg_text);
-		msgrcv(msgid, &message, sizeof(message), 2, 0);
+		msgrcv(msgid, &message, sizeof(message.msg_text), 2, 0);
 		printf("\nParent Received: %s\n", message.msg_text);
 		if(strcmp(message.msg_text, temp) == 0){
 			printf("\nThe String: %s is Palindrome\n", message.msg_text);
 		} else printf("\nThe String: %s is NOT Palindrome\n", message.msg_text);
+
+		msgctl(msgid, IPC_RMID, NULL);
 
 	}
 
