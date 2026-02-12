@@ -1,5 +1,3 @@
-# 8) Multithreading      
-
 **Step 1:** Start.
 
 **Step 2:** Check if the argument count is sufficient (greater than 1). If not, print an error and go to Step 11 (Stop).
