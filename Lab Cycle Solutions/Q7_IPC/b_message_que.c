@@ -5,7 +5,6 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
-#include <sys/wait.h>
 
 typedef struct msg_buffer {
 	long msg_type;
