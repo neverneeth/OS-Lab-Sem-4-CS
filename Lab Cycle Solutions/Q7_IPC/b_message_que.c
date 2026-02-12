@@ -57,7 +57,7 @@ int main() {
 		printf("\nParent Received: %s\n", message.msg_text);
 		if(strcmp(message.msg_text, temp) == 0){
 			printf("\nThe String: %s is Palindrome\n", message.msg_text);
-		} else printf("\nThe String: %s is NOT Palindrome\n", message.msg_text);
+		} else printf("\nThe String: %s is NOT Palindrome\n", temp);
 
 		msgctl(msgid, IPC_RMID, NULL);
 
