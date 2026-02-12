@@ -29,7 +29,7 @@ int main() {
 		return 1;
 	}
 
-	pid_t pid = fork();
+	pid = fork();
 	if(pid == 0){
 		msgrcv(msgid, &message, sizeof(message), 1, 0);
 		printf("\nChild recieved string: %s\n", message.msg_text);
@@ -42,11 +42,23 @@ int main() {
 		}
 
 		printf("\nChild sending reversed string: %s\n", message.msg_text); 
-		message.msg_text = 2;
+		message.msg_type = 2;
 		msgsnd(msgid, &message, sizeof(message), 0);
 	}else {
 		printf("\nEnter the String: ");
 		scanf("%s", message.msg_text);
+		char temp[100];
+		strcpy(temp, message.msg_text);
+
+		message.msg_type = 1;
+		msgsnd(msgid, &message, sizeof(message), 0);
+		printf("\nParent Send %s\n", message.msg_text);
+		msgrcv(msgid, &message, sizeof(message), 2, 0);
+		printf("\nParent Received %s\n", message.msg_text);
+		if(strcmp(message.msg_text, temp) == 0){
+			printf("\nThe String: %s is Palindrome\n", message.msg_text);
+		} else printf("\nThe String: %s is NOT Palindrome\n", message.msg_text);
+
 	}
 
 
