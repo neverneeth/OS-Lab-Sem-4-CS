@@ -6,6 +6,8 @@ int main(){
 	time(&t);
 	printf("Time: %s\n", ctime(&t));
 	printf("PID: %d\n" , getpid()); 
-	sleep(1000);
+	long i;
+    for(i = 0; i < 500000000; i++);
+    sleep(1000);
 	return 0;
 }
