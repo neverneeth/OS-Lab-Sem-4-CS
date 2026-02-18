@@ -1,6 +1,6 @@
 # Algorithm for Deadlock Detection Program
 
-**Step 1:** Start the program.
+**Step 1:** Start 
 
 **Step 2:** Declare integer variables to store the number of processes and the number of resource types.
 
