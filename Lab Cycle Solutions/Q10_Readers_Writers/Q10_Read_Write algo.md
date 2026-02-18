@@ -1,6 +1,6 @@
 #  Readers Writers Algorithm
 
-**Step 1:** Start the program.
+**Step 1:** Start
 
 **Step 2:** Declare global semaphores named `resource`, `readTry`, and `rmutex` to manage synchronization.
 
