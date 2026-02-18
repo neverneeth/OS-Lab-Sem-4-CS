@@ -9,7 +9,7 @@ The programs demonstrate fundamental Operating Systems concepts.
 - All programs strictly follows **POSIX** standard
            
 
-## Contributors:
+## Contributors ❤️:
 
 1. [Joel Lijo Mathew](https://github.com/joellijo32)
 2. [Naveen S](https://github.com/NaveenS-cool)
