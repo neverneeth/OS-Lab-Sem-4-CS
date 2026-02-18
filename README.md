@@ -7,7 +7,7 @@ The programs demonstrate fundamental Operating Systems concepts.
 - Programs are written for a **Linux/UNIX environment**.
 - Standard system headers and libraries are used.
 - All programs strictly follows **POSIX** standard
-- Programs using threads (pthread) should be compiled using options: *-lpthread*, *-lrt*
+- Programs using threads (pthread) should be compiled using options: **-lpthread**, **-lrt**
            
 
 ## Contributors ❤️:
