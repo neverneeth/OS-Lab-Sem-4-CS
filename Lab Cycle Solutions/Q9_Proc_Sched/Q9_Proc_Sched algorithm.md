@@ -1,4 +1,4 @@
-# Algorithm: CPU Scheduling Simulation
+# CPU Scheduling Algorithms
 
 **Step 1:** Start.
 
