@@ -26,7 +26,7 @@ void run_srtf(Process p[], int n, double *avg_wait, double *avg_tat){
         int idx = -1;
         int min = 9999;
 
-        // 🔹 NEW LOGIC (from double srtf)
+        //  NEW LOGIC (from double srtf)
         for(int i = 0; i < n; i++){
 
             if(temp[i].arrival <= time && temp[i].remaining > 0){

@@ -1,4 +1,4 @@
-# Parent Process Wait Algorithm
+# Algorithm
 
 **Step 1:** Start
 

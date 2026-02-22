@@ -1,4 +1,4 @@
-# Deadlock Detection Algorithm
+# Algorithm
 
 **Step 1:** Start 
 

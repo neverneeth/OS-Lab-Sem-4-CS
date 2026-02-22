@@ -1,12 +1,6 @@
-## To execute the program in terminal, run:
-```bash
-	gcc fcfs.c priority.c rr.c SRTF.c scheduler.h main.c -o output	#provided terminal already in the Q9 folder
-	./output
-```
+# Algorithm 1
 
-# Algorithm for Program 1: Number Adder
-
-**Step 1:** Start the program.
+**Step 1:** Start
 
 **Step 2:** Check if the total number of command-line arguments provided is exactly three.
 
@@ -22,11 +16,10 @@
 
 **Step 8:** Stop.
 
----
 
-# Algorithm for Program 2: Process Execution
+# Algorithm 2
 
-**Step 1:** Start the program.
+**Step 1:** Start
 
 **Step 2:** Create a new child process by duplicating the current parent process.
 

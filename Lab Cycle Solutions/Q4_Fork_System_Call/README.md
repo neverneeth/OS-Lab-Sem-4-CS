@@ -1,4 +1,4 @@
-# Child Process Creation Algorithm
+# Algorithm
 
 **Step 1:** Start
 

@@ -1,4 +1,4 @@
-# Dining Philosophers Algorithm
+# Algorithm
 
 **Step 1:** Start
 

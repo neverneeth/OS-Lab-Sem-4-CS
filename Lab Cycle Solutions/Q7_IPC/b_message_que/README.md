@@ -1,4 +1,4 @@
-# b) Using message queue
+# Algorithm
 
 **Step 1:** Start
 

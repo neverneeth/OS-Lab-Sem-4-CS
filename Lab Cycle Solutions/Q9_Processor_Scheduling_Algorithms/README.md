@@ -1,6 +1,6 @@
-# Program 1: Number Adder Algorithm
+# Algorithm 1
 
-**Step 1:** Start
+**Step 1:** Start the program.
 
 **Step 2:** Check if the total number of command-line arguments provided is exactly three.
 
@@ -16,10 +16,11 @@
 
 **Step 8:** Stop.
 
+---
 
-# Program 2: Process Execution Algorithm
+# Algorithm 2
 
-**Step 1:** Start
+**Step 1:** Start the program.
 
 **Step 2:** Create a new child process by duplicating the current parent process.
 

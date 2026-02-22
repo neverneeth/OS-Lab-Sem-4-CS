@@ -1,4 +1,4 @@
-# a) Using pipe
+# Algorithm 1
 
 **Step 1:** Start 
 

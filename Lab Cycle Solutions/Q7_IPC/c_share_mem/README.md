@@ -1,4 +1,4 @@
-# c) Using shared memory
+# Algorithm
 
 **Step 1:** Start
 
