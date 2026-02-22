@@ -8,7 +8,7 @@
   "output_dir": "output",
   "strip_step_prefix": true, 
   "regex": {
-    "expit_dir_enum_prefix": "Q[0-9]+_"
+    "expit_dir_enum_prefix": "[0-9]+_"
   },
   "_comments": {
     "strip_step_prefix": "Used for algorithm generation from markdown. If true, looks for counts in markdown files like 'Step 1:', 'Step 2:', etc., and removes the 'Step X:' prefix when generating new lines in the LaTeX document. If false, treats each new line in the markdown file as a separate step.",
